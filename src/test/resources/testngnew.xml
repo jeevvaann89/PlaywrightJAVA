@@ -1,0 +1,59 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+
+<suite name="SauceDemo Automation Suite" verbose="1" parallel="classes" thread-count="2" configfailurepolicy="continue">
+
+    <listeners>
+        <listener class-name="io.qameta.allure.testng.AllureTestNg"/>
+    </listeners>
+
+    <test name="Login Functionality Tests - Chromium">
+        <parameter name="browser" value="chromium"/>
+        <parameter name="environment" value="dev"/>
+        <groups>
+            <run>
+                <include name="smoke"/>
+                <include name="sanity"/>
+            </run>
+        </groups>
+<!--        <classes>-->
+<!--            <class name="com.playwright.testcases.SwagLabsE2ETest"/>-->
+<!--            <class name="com.playwright.testcases.LoginTests"/>-->
+<!--        </classes>-->
+        <packages>
+            <package name="com.playwright.testcases" />
+        </packages>
+    </test>
+
+
+
+    <!--
+        Another test block for demonstrating parallel execution.
+        You might configure this to run on a different browser or environment,
+        or run a different set of tests.
+        For simplicity, it's running the same LoginTests, simulating a
+        different execution context.
+    -->
+<!--    <test name="Login Functionality Tests - Firefox">-->
+<!--        <parameter name="browser" value="firefox"/>-->
+<!--        <parameter name="environment" value="dev"/>-->
+<!--        <classes>-->
+<!--            <class name="com.playwright.testcases.LoginTests"/>-->
+<!--        </classes>-->
+<!--    </test>-->
+
+    <!--
+        You can add more <test> tags here to run different sets of tests
+        or the same tests on different configurations in parallel.
+    -->
+    <!--
+    <test name="Products Page Tests - Webkit">
+        <parameter name="browser" value="webkit"/>
+        <parameter name="environment" value="qa"/>
+        <classes>
+            <class name="com.saucedemo.tests.ProductsTests"/>
+        </classes>
+    </test>
+    -->
+
+</suite>
